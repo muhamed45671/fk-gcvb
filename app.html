@@ -1,0 +1,152 @@
+<html>
+  <body>
+    <ul id="list"></ul>
+    <button id="free">free</button>
+    <input type="file" id="fileInput">
+    <img id="imagePreview">
+    <textarea id="zone"></textarea>
+    <textarea id="zone1"></textarea>
+    <textarea id="zone2"></textarea>
+    <textarea id="zone3"></textarea>
+    <textarea id="zone4"></textarea>
+    
+    <script>
+      var list = document.getElementById("list");
+      var free = document.getElementById("free");
+      var zone = document.getElementById("zone");
+      var zone1 = document.getElementById("zone1");
+      var zone2 = document.getElementById("zone2");
+      var zone3 = document.getElementById("zone3");
+      var zone4 = document.getElementById("zone4");
+      var fileInput = document.getElementById("fileInput");
+      var imagePreview = document.getElementById("imagePreview");
+
+      fileInput.addEventListener("change", function() {
+        var file = fileInput.files[0];
+        var reader = new FileReader();
+
+        reader.addEventListener("load", function () {
+          imagePreview.src = reader.result;
+        }, false);
+
+        if (file) {
+          reader.readAsDataURL(file);
+        }
+      });
+
+      free.onclick = function() {
+        var zone = document.getElementById("zone");
+        var list = document.getElementById("list");
+        var newItem = document.createElement("li");
+        newItem.innerHTML = `<div style="font-size: 60px; text-align:center;">${zone.value}</div>`;
+        list.appendChild(newItem);
+
+     
+        var zone = document.getElementById("zone");
+        var list = document.getElementById("list");
+        var outcome1Button = document.createElement("button");
+        var newItem1 = document.createElement("li");
+        outcome1Button.innerHTML = `<div style="font-size: 24px; textalign:center;">${zone1.value}</div>`;
+        newItem1.appendChild(outcome1Button);
+        list.appendChild(newItem1);
+
+        var zone = document.getElementById("zone");
+        var list = document.getElementById("list");
+        var outcome2Button = document.createElement("button");
+        var newItem2 = document.createElement("li");
+        outcome2Button.innerHTML = `<div style="font-size: 24px; textalign:center;">${zone2.value}</div>`;
+        newItem2.appendChild(outcome2Button);
+        list.appendChild(newItem2);
+        
+        var zone3 = document.getElementById("zone");
+        var list = document.getElementById("list");
+        var outcome3Button = document.createElement("button");
+        var newItem3 = document.createElement("li");
+        outcome3Button.innerHTML = `<div style="font-size: 24px; text
+        align:center;">${zone3.value}</div>`;
+        newItem3.appendChild(outcome3Button);
+        list.appendChild(newItem3);
+        
+        var zone = document.getElementById("zone");
+        var list = document.getElementById("list");
+        var outcome4Button = document.createElement("button");
+        var newItem4 = document.createElement("li");
+        outcome4Button.innerHTML = `<div style="font-size: 24px; textalign:center;">${zone4.value}</div>`;
+        newItem4.appendChild(outcome4Button);
+        list.appendChild(newItem4);
+
+        var newItem5 = document.createElement("li");
+        newItem5.appendChild(imagePreview.cloneNode());
+        list.appendChild(newItem5);
+
+        // Clear the values in the textareas and reset the image preview
+        zone.value = "";
+        zone1.value = "";
+        zone2.value = "";
+        zone3.value = "";
+        zone4.value = "";
+        fileInput.value = "";
+        imagePreview.src = "";
+        var outcome1Count = 0;
+var outcome2Count = 0;
+var outcome3Count = 0;
+var outcome4Count = 0;
+var totalOutcomeCount = 0;
+
+
+outcome1Button.onclick = function() {
+  outcome1Count++;
+  totalOutcomeCount++;
+  updatePercentages();
+};
+
+outcome2Button.onclick = function() {
+  outcome2Count++;
+  totalOutcomeCount++;
+  updatePercentages();
+};
+outcome3Button.onclick = function() {
+  outcome3Count++;
+  totalOutcomeCount++;
+  updatePercentages();
+};
+outcome4Button.onclick = function() {
+  outcome4Count++;
+  totalOutcomeCount++;
+  updatePercentages();
+};
+
+function updatePercentages() {
+  var outcome1Percentage = Math.round((outcome1Count / totalOutcomeCount) * 100);
+  var outcome2Percentage = Math.round((outcome2Count / totalOutcomeCount) * 100);
+  var outcome3Percentage = Math.round((outcome3Count / totalOutcomeCount) * 100);
+  var outcome4Percentage = Math.round((outcome4Count / totalOutcomeCount) * 100);
+
+  outcome1Button.innerHTML = `outcome1Button 1<br>${outcome1Percentage}%`;
+  outcome2Button.innerHTML = `outcome2Button 2<br>${outcome2Percentage}%`;
+  outcome3Button.innerHTML = `outcome3Button 1<br>${outcome1Percentage}%`;
+  outcome4Button.innerHTML = `outcome4Button 1<br>${outcome1Percentage}%`;
+  
+  outcome1Button.style.background = `linear-gradient(90deg, #007bff ${outcome1Percentage}%, #d3d3d3 ${outcome1Percentage}%)`;
+  outcome2Button.style.background = `linear-gradient(90deg, #007bff ${outcome2Percentage}%, #d3d3d3 ${outcome2Percentage}%)`;
+  outcome3Button.style.background = `linear-gradient(90deg, #007bff ${outcome3Percentage}%, #d3d3d3 ${outcome3Percentage}%)`;
+  outcome4Button.style.background = `linear-gradient(90deg, #007bff ${outcome4Percentage}%, #d3d3d3 ${outcome4Percentage}%)`;
+}
+
+// Set initial styles for buttons
+var buttons = document.getElementsByClassName("outcome-button");
+for (var i = 0; i < buttons.length; i++) {
+  buttons[i].style.width = "150px";
+  buttons[i].style.height = "100px";
+  buttons[i].style.color = "#fff";
+  buttons[i].style.border = "none";
+  buttons[i].style.borderRadius = "10px";
+  buttons[i].style.fontSize = "24px";
+  buttons[i].style.fontWeight = "bold";
+  buttons[i].style.textAlign = "center";
+  buttons[i].style.cursor = "pointer";
+}
+      };
+    </script>
+  </body>
+</html>
